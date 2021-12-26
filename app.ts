@@ -7,7 +7,9 @@ import userPages, { updateBehavior } from "./browserControl"
 
 config()
 
-const { PREFIX } = process.env
+const { PREFIX, TOKEN } = process.env
+
+if (!PREFIX || !TOKEN) process.exit(404)
 
 const client = new Client({
   partials: ["CHANNEL"],
@@ -90,6 +92,6 @@ client.on("messageCreate", async (message) => {
   command.run(client, message, args)
 })
 
-client.login(process.env.TOKEN)
+client.login(TOKEN)
 
 process.on("uncaughtException", (e) => console.log(e))
