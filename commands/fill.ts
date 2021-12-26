@@ -15,7 +15,7 @@ const FillCommand: CommandFile = {
       max: 1,
     })
     const response = collected.first()
-    await userPage.page.fill(args.join(" "), response.content)
+    if (response) await userPage.page.fill(args.join(" "), response.content)
     await userPage.page.waitForLoadState("load")
     const msg = await userPage.message.edit({
       content: userPage.page.url() + " Filled",
