@@ -86,7 +86,9 @@ client.on("messageCreate", async (message) => {
   if (message.author.bot) return
   if (!message.content.startsWith(PREFIX)) return
   const args = message.content.slice(PREFIX.length).trim().split(/ +/g)
-  const cmd = args.shift().toLowerCase()
+  const first = args.shift()
+  if (!first) return
+  const cmd = first.toLowerCase()
   const command = commands.get(cmd)
   if (!command) return
   command.run(client, message, args)
