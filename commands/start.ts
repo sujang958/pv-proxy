@@ -54,10 +54,8 @@ const StartCommand: CommandFile = {
         message: msg,
       })
     } catch (e) {
-      if (userPages.has(message.author.id)) {
-        await userPages.get(message.author.id).page.close()
-        userPages.delete(message.author.id)
-      }
+      await userPages.get(message.author.id)?.page.close()
+      userPages.delete(message.author.id)
       message.reply({
         content: "무언가 잘못됬습니다, url이 잘못됬을수도 있습니다",
         allowedMentions: { repliedUser: false },
