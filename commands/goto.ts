@@ -10,7 +10,7 @@ const GotoCommand: CommandFile = {
     try {
       const userPage = userPages.get(message.author.id)
       //if (message.inGuild()) return message.reply("DM으로 해주세요!")
-      if (!userPage) return message.reply("페이지가 존재하지 않습니다!")
+      if (!userPage) return message.reply("먼저, 자신의 페이지를 생성해주세요!")
       const target = new URL(addhttp(args.join(" ")))
       if (list.includes(target.hostname))
         if (message.channel instanceof TextChannel) {
